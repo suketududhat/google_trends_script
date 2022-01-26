@@ -9,6 +9,8 @@ pytrends = TrendReq(hl='en-US', tz=360)
 # build payload
 # df = pd.read_excel(r'.\data\interest_by_region.xlsx')
 df_geoIndex = pd.read_excel(r'.\data\geocode_index.xlsx')
+df = pd.read_excel(r'.\data\interest_by_region.xlsx')
+# writer = pd.ExcelWriter(r'.\data\interest_by_region.xlsx', engine='xlsxwriter')
 dates = []
 kw_list = ['Intel', 'AMD']  # list of keywords to get data
 # timeframe = input('Enter range of years (YYYY-YYYY): ')
@@ -24,8 +26,6 @@ def yearly_trends_fetch(timeframe):
         start = int(timeframe[0])
         end = int(timeframe[1])
         while start <= end:
-            # result = []
-            # by_region = []
             start_date = str(start) + '-01-01'
             end_date = str(start) + '-12-31'
             timeframe = str(start_date + ' ' + end_date)
@@ -55,22 +55,3 @@ concatenating_yearly_fetch()
         #     result = pd.concat([by_region, merge_result], axis=0)  # axis=1 concatenates as columns;
         #     # 0 concatenates as rows
         # # print(result)
-
-
-
-
-# df2.to_excel(r'.\data\interest_by_region.xlsx', index=False)
-# os.system(r'start "excel" ".\data\interest_by_region.xlsx"')
-
-# pytrends.build_payload(kw_list, cat=0, timeframe=timeframe, geo='US')
-
-# 1 Interest over Time
-# data = pytrends.interest_over_time()
-# data = data.reset_index()
-# print(data.head())
-
-# fig = px.line(data, x="date", y=['machine learning'], title='Keyword Web Search Interest Over Time')
-# fig.show()
-
-#
-# print(by_region.head())
